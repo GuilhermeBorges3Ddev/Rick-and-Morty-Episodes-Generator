@@ -1,27 +1,20 @@
-import '../assets/styles/App.scss';
+import { Route, Switch } from 'react-router-dom'
 
-//import Historic from './Historic';
+import Home from './Home/Home'
+import Historic from './Historic/Historic'
+import NotFound from './NotFound/NotFound';
 
-// import {
-//   BrowserRouter as Router,
-//   Switch,
-//   Route,
-//   Link
-// } from "react-router-dom";
+import '../assets/styles/App.scss'
 
 function App() {
   return (
-    <div className="App">
-
-      <div className="App-container">
-        
-        <p>
-          Main page
-        </p>
-
-      </div>
-
-    </div>
+    <main>
+      <Switch>
+        <Route path="/" component={Home} exact />
+        <Route path="/episodes" component={Historic} />
+        <Route component={NotFound} />
+      </Switch>
+    </main>
   );
 }
 
