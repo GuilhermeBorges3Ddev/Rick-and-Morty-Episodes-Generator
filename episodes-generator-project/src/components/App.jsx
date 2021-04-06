@@ -5,6 +5,7 @@ import store from '../store/index';
 
 import Home from './Home/Home';
 import Historic from './Historic/Historic';
+import NewEpisode from './NewEpisode/NewEpisode';
 import NotFound from './NotFound/NotFound';
 
 import '../assets/styles/App.scss';
@@ -16,6 +17,7 @@ function App() {
         <Switch>
           <Route path="/" component={Home} exact />
           <Route path="/episodes" component={Historic} />
+          <Route path="/new-episode" component={NewEpisode} />
           <Route component={NotFound} />
         </Switch>
       </main>

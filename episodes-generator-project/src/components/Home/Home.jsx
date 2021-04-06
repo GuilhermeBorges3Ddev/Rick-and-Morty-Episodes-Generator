@@ -1,13 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Button } from 'antd';
 
 import './Home.scss';
 import '../../assets/styles/App.scss';
 
 const routes = {
-    "home": "/",
-    "historic": "/episodes"
-}
+  home: '/',
+  generateEpisode: '/new-episode',
+  historic: '/episodes',
+};
 
 export default function Home() {
   return (
@@ -21,10 +22,14 @@ export default function Home() {
           />
         </a>
         <div className="site-button-ghost-wrapper">
-          <Button className="site-button-ghost mx-3" ghost href={routes.home}>
+          <Button className="site-button-ghost mx-3" ghost href={routes.generateEpisode}>
             generate a new episode
           </Button>
-          <Button className="site-button-ghost mx-3" ghost href={routes.historic}>
+          <Button
+            className="site-button-ghost mx-3"
+            ghost
+            href={routes.historic}
+          >
             see historic of episodes
           </Button>
         </div>

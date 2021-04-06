@@ -1,0 +1,26 @@
+#notify-before-generate {
+    font-size: 18px !important;
+}
+
+.character-input-area, .locations-input-area {
+    color: white;
+    font-size: 15px;
+    margin-top: 2.5em;
+}
+
+.numeric-input {
+    color: white;
+    background-color: #122400;
+    margin-top: 1em;
+}
+
+.inputs-area {
+    border: 2px solid darkslategray;
+    padding: 2em;
+}
+
+@keyframes blinker {
+    50% {
+      opacity: 0;
+    }
+  }
