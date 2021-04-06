@@ -46,7 +46,8 @@ Explainning the archteture of folders:
 > **.eslint and .prettierrc** - They are combined to create a pattern for tabulation and organizes all app
 
 Look the picture that gives a visual idea of how those concepts are apllyed:
-....
+
+![Structure](https://user-images.githubusercontent.com/19985305/113696309-356dea00-96a8-11eb-8cd3-862ec14df214.PNG)
 
 ## Snippet of the interface:
 
