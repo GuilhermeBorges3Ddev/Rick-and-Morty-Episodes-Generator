@@ -34,16 +34,21 @@ I discribed on the next table the routes what are on the app, and on right side 
 Explainning the archteture of folders:
 
 > **assets/** - Separates images and syles to the other logical parts
+> 
 > **components/** - Each page represents a route and has his JSX with his own SASS, like a organic separation, inspired by the DDD pattern
+> 
 > **App.jsx** - Isolates the core funcs, with router-dom and a <Provider> to Redux
+> 
 > **services/** - Contains the ApolloCli calls, but can be added Axios and other external service like validators
+> 
 > **store** - Just a index.js to isolate the state-data of Redux
+> 
 > **.eslint and .prettierrc** - They are combined to create a pattern for tabulation and organizes all app
 
 Look the picture that gives a visual idea of how those concepts are apllyed:
 ....
 
-#### Snippet of the interface:
+## Snippet of the interface:
 
 If you consider the app, just clone and run:
 
