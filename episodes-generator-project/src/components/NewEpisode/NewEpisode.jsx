@@ -44,29 +44,40 @@ export default function Historic() {
   }
 
   function setEpisodeStorage() {
-  
-    let sentEpisode = { "number": 0, "characters": [], "locales": []}
+    let sentEpisode = { number: 0, characters: [], locales: [] };
+    let episodesId = [];
 
     //Generates a random number for the episode between 1 - 10000
-    setStorageEpisodeNumber(Math.floor(Math.random() * (10000 - 1)) + 1)
-    sentEpisode.number = storageEpisodeNumber
-    
-    let charactersStorageOnEpisode = [ ]
-    let localesStorageOnEpisode = []
-    
-    for(let iteratorOne = 0; iteratorOne <= charactersQuantity; iteratorOne++) {
-      charactersStorageOnEpisode.push(defaultCharactersApiData[Math.floor(Math.random() * (20 - 1)) + 1].name)
-    }
-    
-    sentEpisode.characters.push(charactersStorageOnEpisode)
-    
-    for(let iteratorTwo = 0; iteratorTwo <= localesQuantity; iteratorTwo++) {
-      localesStorageOnEpisode.push(defaultLocalesApiData[Math.floor(Math.random() * (20 - 1)) + 1].name)
-    }
-    
-    sentEpisode.locales.push(localesStorageOnEpisode)
+    setStorageEpisodeNumber(Math.floor(Math.random() * (10000 - 1)) + 1);
+    sentEpisode.number = storageEpisodeNumber;
 
-    localStorage.setItem(`episode-${storageEpisodeNumber}`, JSON.stringify(sentEpisode));
+    let charactersStorageOnEpisode = [];
+    let localesStorageOnEpisode = [];
+
+    for (
+      let iteratorOne = 0;
+      iteratorOne <= charactersQuantity;
+      iteratorOne++
+    ) {
+      charactersStorageOnEpisode.push(
+        defaultCharactersApiData[Math.floor(Math.random() * (20 - 1)) + 1].name
+      );
+    }
+
+    sentEpisode.characters.push(charactersStorageOnEpisode);
+
+    for (let iteratorTwo = 0; iteratorTwo <= localesQuantity; iteratorTwo++) {
+      localesStorageOnEpisode.push(
+        defaultLocalesApiData[Math.floor(Math.random() * (20 - 1)) + 1].name
+      );
+    }
+
+    sentEpisode.locales.push(localesStorageOnEpisode);
+
+    localStorage.setItem(
+      `episode-${storageEpisodeNumber}`,
+      JSON.stringify(sentEpisode)
+    );
 
   }
 
@@ -152,16 +163,26 @@ export default function Historic() {
             <Button
               className="bg-success text-white text-uppercase"
               onClick={setEpisodeStorage}
+              href="/episodes"
               type="dashed"
               size="large"
             >
               generate episode
             </Button>
           ) : (
-            <span id="notify-before-generate" className="text-small text-danger border border-danger p-2">
-              Select more than 0 characters and 0 locations to generate an episode
+            <span
+              id="notify-before-generate"
+              className="text-small text-danger border border-danger p-2"
+            >
+              Select more than 0 characters and 0 locations to generate an
+              episode
             </span>
           )}
+        </div>
+        <div className="mt-4">
+          <Button type="dashed" ghost href="/">
+            Back to Home
+          </Button>
         </div>
       </div>
     </div>
