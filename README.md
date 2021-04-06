@@ -52,8 +52,10 @@ Look the picture that gives a visual idea of how those concepts are apllyed:
 
 If you consider the app, just clone and run:
 
-```sh
-gggg
-```
+![episodes](https://user-images.githubusercontent.com/19985305/113695726-934e0200-96a7-11eb-9633-72b239d0597b.png)
+
+![newEpisode](https://user-images.githubusercontent.com/19985305/113695796-a6f96880-96a7-11eb-86f8-d1b1b713ab1e.png)
+
+![home](https://user-images.githubusercontent.com/19985305/113695848-b4aeee00-96a7-11eb-953f-15d5b61e7d52.png)
 
 ***@GuilhermeBorges3Ddev <2021>***
