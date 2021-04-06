@@ -15,6 +15,7 @@ export default function Historic() {
   const [charactersQuantity, setCharactersQuantity] = useState(0);
   const [localesQuantity, setLocalesQuantity] = useState(0);
   const [btnAvailable, setBtnAvailable] = useState(false);
+  const [storageEpisodeNumber, setStorageEpisodeNumber] = useState(0);
 
   const defaultNewEpisodePageMessage = useSelector(
     (state) => state.data[0]['newEpisodePage']
@@ -40,6 +41,33 @@ export default function Historic() {
     return charactersQuantity > 0 && localesQuantity > 0
       ? setBtnAvailable(true)
       : setBtnAvailable(false);
+  }
+
+  function setEpisodeStorage() {
+  
+    let sentEpisode = { "number": 0, "characters": [], "locales": []}
+
+    //Generates a random number for the episode between 1 - 10000
+    setStorageEpisodeNumber(Math.floor(Math.random() * (10000 - 1)) + 1)
+    sentEpisode.number = storageEpisodeNumber
+    
+    let charactersStorageOnEpisode = [ ]
+    let localesStorageOnEpisode = []
+    
+    for(let iteratorOne = 0; iteratorOne <= charactersQuantity; iteratorOne++) {
+      charactersStorageOnEpisode.push(defaultCharactersApiData[Math.floor(Math.random() * (20 - 1)) + 1].name)
+    }
+    
+    sentEpisode.characters.push(charactersStorageOnEpisode)
+    
+    for(let iteratorTwo = 0; iteratorTwo <= localesQuantity; iteratorTwo++) {
+      localesStorageOnEpisode.push(defaultLocalesApiData[Math.floor(Math.random() * (20 - 1)) + 1].name)
+    }
+    
+    sentEpisode.locales.push(localesStorageOnEpisode)
+
+    localStorage.setItem(`episode-${storageEpisodeNumber}`, JSON.stringify(sentEpisode));
+
   }
 
   useEffect(() => {
@@ -123,6 +151,7 @@ export default function Historic() {
           {btnAvailable ? (
             <Button
               className="bg-success text-white text-uppercase"
+              onClick={setEpisodeStorage}
               type="dashed"
               size="large"
             >
