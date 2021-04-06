@@ -14,6 +14,7 @@ export default function Historic() {
   const [defaultLocalesApiData, setDefaultLocalesApiData] = useState({});
   const [charactersQuantity, setCharactersQuantity] = useState(0);
   const [localesQuantity, setLocalesQuantity] = useState(0);
+  const [btnAvailable, setBtnAvailable] = useState(false);
 
   const defaultNewEpisodePageMessage = useSelector(
     (state) => state.data[0]['newEpisodePage']
@@ -35,10 +36,20 @@ export default function Historic() {
     setLocalesQuantity(value);
   }
 
+  function isButtonAvailable() {
+    return charactersQuantity > 0 && localesQuantity > 0
+      ? setBtnAvailable(true)
+      : setBtnAvailable(false);
+  }
+
   useEffect(() => {
     initialCharacters();
     initialLocales();
   }, []);
+
+  useEffect(() => {
+    isButtonAvailable();
+  });
 
   function initialCharacters() {
     client
@@ -86,34 +97,42 @@ export default function Historic() {
           <div className="character-input-area">
             <div>{defaultCharactersNumberLabel}</div>
             <InputNumber
-              min={1}
+              min={0}
               max={20}
               size="large"
-              defaultValue={1}
+              defaultValue={0}
               onChange={onChangeCharactersNumber}
               className="numeric-input"
+              type="number"
             />
           </div>
           <div className="locations-input-area">
             <div>{defaultLocalesNumberLabel}</div>
             <InputNumber
-              min={1}
+              min={0}
               max={20}
               size="large"
-              defaultValue={1}
+              defaultValue={0}
               onChange={onChangeLocationsNumber}
               className="numeric-input"
+              type="number"
             />
           </div>
         </div>
         <div className="mt-4">
-          <Button
-            className="bg-success text-white text-uppercase"
-            type="dashed"
-            size="large"
-          >
-            generate episode
-          </Button>
+          {btnAvailable ? (
+            <Button
+              className="bg-success text-white text-uppercase"
+              type="dashed"
+              size="large"
+            >
+              generate episode
+            </Button>
+          ) : (
+            <span id="notify-before-generate" className="text-small text-danger border border-danger p-2">
+              Select more than 0 characters and 0 locations to generate an episode
+            </span>
+          )}
         </div>
       </div>
     </div>
